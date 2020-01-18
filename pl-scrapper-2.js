@@ -32,12 +32,11 @@ db.once('open', function () {
         await page.goto('https://twitter.com/realdonaldtrump?lang=en');
 
         const scrollsToBottom = 5;
-        const pixelsToScroll = 50000;
         const msToWait = 3000;
 
         for (var i = 0; i < scrollsToBottom; i++) {
             await page.evaluate(() => {
-                window.scrollBy(0, pixelsToScroll);
+                window.scrollBy(0, 50000);
             });
             await page.waitFor(msToWait);
         }
