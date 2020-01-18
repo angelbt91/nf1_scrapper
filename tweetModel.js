@@ -14,10 +14,10 @@ var tweetSchema = mongoose.Schema({
         type: String,
         required: true
     }
-});
+}, {collection:"tweets"});
 
 // Export Tweet model
-var tweets = module.exports = mongoose.model('tweet', tweetSchema);
+var tweets = module.exports = mongoose.model('tweets', tweetSchema);
 
 module.exports.get = function (callback, limit) {
     tweets.find(callback).limit(limit);
