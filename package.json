@@ -2,7 +2,7 @@
   "name": "nf1_scrapper",
   "version": "1.0.0",
   "description": "Second hackaton - Scrapping project",
-  "main": "pl-scrapper-old.js",
+  "main": "pl-scrapper.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -14,6 +14,7 @@
     "method-override": "^2.1.2",
     "mongoose": "^3.6.20",
     "puppeteer": "^2.0.0",
-    "puppeteer-autoscroll-down": "^0.1.2"
+    "puppeteer-autoscroll-down": "^0.1.2",
+    "sentiment": "^5.0.2"
   }
 }
