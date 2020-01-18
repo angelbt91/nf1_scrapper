@@ -1,7 +1,10 @@
+const axios = require('axios');
 const cheerio = require('cheerio');
+
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017', {useNewUrlParser: true});
+
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -18,10 +21,9 @@ db.once('open', function () {
     // paso 2: crear el modelo de un tweet
     var Tweet = mongoose.model('Tweet', tweetSchema);
 
-    console.log("Scrapping... This may take some time.");
-
-    // paso 3: cargar el chrome headless y hacer scroll y scroll
+    // paso 3: crear los objetos a guardar en la bdd
     const url = 'https://twitter.com/realdonaldtrump?lang=en';
+
 
     const puppeteer = require('puppeteer');
 
@@ -31,26 +33,20 @@ db.once('open', function () {
         await page.setViewport({width: 1366, height: 768});
         await page.goto('https://twitter.com/realdonaldtrump?lang=en');
 
-        const scrollsToBottom = 5;
-        const msToWait = 3000;
+        // TODO: HACER SCROLL ANTES DE GUARDAR EL HTML DE LA PAGINA
 
-        for (var i = 0; i < scrollsToBottom; i++) {
-            await page.evaluate(() => {
-                window.scrollBy(0, 50000);
-            });
-            await page.waitFor(msToWait);
-        }
+        // !!!!!!!!!!!
 
         let html = await page.$eval('.ProfilePage', el => el.innerHTML);
-
-        await browser.close();
-
-        // paso 4: para cada tweet, creamos un modelo y lo guardamos
         const $ = cheerio.load(html);
         const tweets = $('.tweet');
 
+        await browser.close();
+
+
         let numSavedTweets = 0;
 
+        // paso 4: para cada tweet, creamos un modelo y lo guardamos
         tweets.each(function () {
             const user = $(this).find('.fullname').text();
             const body = $(this).find('.tweet-text').text();
@@ -69,6 +65,40 @@ db.once('open', function () {
         console.log("¡" + numSavedTweets + " tweets guardados!");
 
     })();
+
+    /*
+
+    METODO ANTIGUO: FETCH CON AXIOS
+
+    axios(url)
+        .then(response => {
+            const html = response.data;
+            const $ = cheerio.load(html);
+            const tweets = $('.tweet');
+
+            let numSavedTweets = 0;
+
+            // paso 4: para cada tweet, creamos un modelo y lo guardamos
+            tweets.each(function() {
+                const user = $(this).find('.fullname').text();
+                const body = $(this).find('.tweet-text').text();
+                const date = $(this).find('._timestamp').attr('data-time');
+
+                let tweetToSave = new Tweet({user: user, body: body, date: date});
+
+                tweetToSave.save(function (err, tweetToSave) {
+                    if (err) return console.error(err);
+                });
+
+                numSavedTweets++;
+
+            });
+
+            console.log("¡" + numSavedTweets + " tweets guardados!");
+
+        })
+        .catch(console.error);
+    */
 
 });
 

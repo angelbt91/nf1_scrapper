@@ -2,7 +2,7 @@
   "name": "nf1_scrapper",
   "version": "1.0.0",
   "description": "Second hackaton - Scrapping project",
-  "main": "pl-scrapper.js",
+  "main": "pl-scrapper-old.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
