@@ -21,13 +21,33 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
   color: #61dafb;
 }
+.subMain{
+  height: 80vh;
+  width:100vh;
+  background-color: lightgrey;
+  border-radius: 15px;
+}
+.contentDiv{
+  padding-top:60px;
+}
+.user{
+  color:black;
+  font-weight: bold;
+  font-size: 20px;
+}
+.body{
+  font-style: italic;
 
+}
+#title{
+  padding-bottom: 15px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

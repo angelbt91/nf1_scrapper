@@ -1,9 +1,9 @@
-// const Tweet = require('./tweetModel.js');
+const Tweet = require('./tweetModel.js');
 var Sentiment = require('sentiment');
 
 const tweets = [
     {
-        body: "The noble people of Iran—who love America—deserve a government that\'s more interested in helping them achieve their dreams than killing them for demanding respect. Instead of leading Iran toward ruin, its leaders should abandon terror and Make Iran Great Again!",
+        body: "The noble people of Iran—who America—deserve a government that\'s more interested in helping them achieve their dreams than killing them for demanding respect. Instead of leading Iran toward ruin, its leaders should abandon terror and Make Iran !",
         user: 'Donald Trump',
         sentiment: 5
     },
@@ -22,7 +22,7 @@ const tweets = [
 
 exports.getTweets = function (req, res) {
 
-    var tweetsToSend;
+    /*var tweetsToSend;
 
     function addSentiment(phrases) {
         tweetsToSend = phrases.map(tweet => {
@@ -36,11 +36,14 @@ exports.getTweets = function (req, res) {
 
     addSentiment(tweets);
 
-    res.json(tweetsToSend);
+    res.json(tweetsToSend);*/
+    var new_ = new Tweet({body: "Huhuhuhuhuhu",
+        date: 7777888841212,
+        user: "jiadjiajsdis"});
 
+    new_.save();
 
-    /*Tweet.get(function (err, tweets) {
-
+    Tweet.get(function (err, tweets) {
         console.log('get tweets model');
         if (err) {
             res.json({
@@ -54,6 +57,4 @@ exports.getTweets = function (req, res) {
             data: tweets
         });
     });
-    */
-
 };

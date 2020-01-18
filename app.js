@@ -3,15 +3,18 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 let apiRoutes = require("./api-routes");
+let cors = require('cors');
 
 // Initialise the app
 let app = express();
 
 // Configure bodyparser to handle post requests
+app.use(cors());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+
 
 // Connect to Mongoose and set connection variable
 mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
