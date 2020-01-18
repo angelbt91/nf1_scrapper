@@ -3,7 +3,7 @@ var Sentiment = require('sentiment');
 
 const tweets = [
     {
-        body: "The noble people of Iran—who love America—deserve a government that\'s more interested in helping them achieve their dreams than killing them for demanding respect. Instead of leading Iran toward ruin, its leaders should abandon terror and Make Iran Great Again!",
+        body: "The noble people of Iran—who America—deserve a government that\'s more interested in helping them achieve their dreams than killing them for demanding respect. Instead of leading Iran toward ruin, its leaders should abandon terror and Make Iran !",
         user: 'Donald Trump',
         sentiment: 5
     },

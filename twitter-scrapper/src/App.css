@@ -34,9 +34,20 @@
   border-radius: 15px;
 }
 .contentDiv{
-  padding: 10px 10px 10px 10px;
+  padding-top:60px;
 }
+.user{
+  color:black;
+  font-weight: bold;
+  font-size: 20px;
+}
+.body{
+  font-style: italic;
 
+}
+#title{
+  padding-bottom: 15px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
