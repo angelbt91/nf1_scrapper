@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
 var db = mongoose.connection;
 
-console.log(db.model("tweets").schema);
+//console.log(db.model("tweets").schema);
 
 // Added check for DB connection
 if (!db)

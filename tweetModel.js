@@ -17,7 +17,7 @@ var tweetSchema = mongoose.Schema({
 });
 
 // Export Tweet model
-var tweets = module.exports = mongoose.model('tweets', tweetSchema);
+var tweets = module.exports = mongoose.model('tweet', tweetSchema);
 
 module.exports.get = function (callback, limit) {
     tweets.find(callback).limit(limit);
