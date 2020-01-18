@@ -18,6 +18,8 @@ db.once('open', function () {
     // paso 2: crear el modelo de un tweet
     var Tweet = mongoose.model('Tweet', tweetSchema);
 
+    console.log("Scrapping... This may take some time.");
+
     // paso 3: cargar el chrome headless y hacer scroll y scroll
     const url = 'https://twitter.com/realdonaldtrump?lang=en';
 
@@ -29,20 +31,16 @@ db.once('open', function () {
         await page.setViewport({width: 1366, height: 768});
         await page.goto('https://twitter.com/realdonaldtrump?lang=en');
 
-        await page.evaluate( () => {
-            window.scrollBy(0, 50000);
-        });
-        await page.waitFor(4000);
+        const scrollsToBottom = 5;
+        const pixelsToScroll = 50000;
+        const msToWait = 3000;
 
-        await page.evaluate( () => {
-            window.scrollBy(0, 50000);
-        });
-        await page.waitFor(4000);
-
-        await page.evaluate( () => {
-            window.scrollBy(0, 50000);
-        });
-        await page.waitFor(4000);
+        for (var i = 0; i < scrollsToBottom; i++) {
+            await page.evaluate(() => {
+                window.scrollBy(0, pixelsToScroll);
+            });
+            await page.waitFor(msToWait);
+        }
 
         let html = await page.$eval('.ProfilePage', el => el.innerHTML);
 
