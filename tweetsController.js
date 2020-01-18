@@ -22,7 +22,7 @@ const tweets = [
 
 exports.getTweets = function (req, res) {
 
-    /*var tweetsToSend;
+    var tweetsToSend;
 
     function addSentiment(phrases) {
         tweetsToSend = phrases.map(tweet => {
@@ -36,7 +36,9 @@ exports.getTweets = function (req, res) {
 
     addSentiment(tweets);
 
-    res.json(tweetsToSend);*/
+    res.json(tweetsToSend);
+
+    /*
     var new_ = new Tweet({body: "Huhuhuhuhuhu",
         date: 7777888841212,
         user: "jiadjiajsdis"});
@@ -57,4 +59,5 @@ exports.getTweets = function (req, res) {
             data: tweets
         });
     });
+     */
 };
